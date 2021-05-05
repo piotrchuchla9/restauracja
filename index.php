@@ -37,7 +37,7 @@ $conn;
         <div class="category">
             <ul>
                 <li><a href="#" class="pizzaBtn">Pizza</a></li>
-                <li><a href="#" class="kebabBtn">Kebab</a></li>
+                <li><a href="#" class="zupaBtn">Zupa</a></li>
                 <li><a href="#" class="susziBtn">Suszi</a></li>
                 <li><a href="#" class="pierogiBtn">Pierogi</a></li>
                 <li><a href="#" class="inneBtn">Inne</a></li>
@@ -64,8 +64,8 @@ $conn;
             <div class="pizza">
                 <p>pizza</p>
             </div>
-            <div class="kebab">
-                <p>kebab</p>
+            <div class="zupa">
+                <p>zupa</p>
             </div>
             <div class="suszi">
                 <p>suszi</p>
@@ -86,7 +86,7 @@ $conn;
             <div>
             <?php
 
-                $sql = "SELECT * FROM menu WHERE Menu_ID = 20;";
+                $sql = "SELECT * FROM menu WHERE Kategoria = 'Pizza';";
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
 

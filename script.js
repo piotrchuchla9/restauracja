@@ -46,9 +46,9 @@ $("document").ready(function() {
             'slow');
     });
 
-    $(".kebabBtn").click(function() {
+    $(".zupaBtn").click(function() {
         $('html,body').animate({
-            scrollTop: $(".kebab").offset().top},
+            scrollTop: $(".zupa").offset().top},
             'slow');
     });
 
