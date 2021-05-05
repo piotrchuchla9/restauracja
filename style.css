@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap');
+
+*{
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    background: rgb(245, 220, 197);
+}
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    z-index: 0;
+    display: block;
+}
+
+header{
+    background: orange;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+header::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.category{
+    background: darkorange;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+
+}
+
+.logo {
+    position: absolute;
+    height: 60%;
+    float: left;
+    padding:0;
+    padding-bottom: 30px;
+}
+
+.category li{
+    display:inline-block;
+    margin:0px auto 0px auto;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 45px;
+    padding-bottom: 0px;;
+}
+
+.category a{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    transition: 0.25s;
+}
+.category::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    margin: 0;
+    display: inline-block;
+    margin-left: 70px;
+    padding: 25px 0;
+}
+
+nav a {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    border-bottom: 3px solid rgb(211, 103, 103);
+    transition: 0.25s;
+}
+
+nav a:hover {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 5px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+main {
+    height: 100vh;
+    position: absolute;
+}
+
+.enter {
+    display: flex;
+}
+
+.enter .welcome {
+    width: 50vw;
+    /* background-color: aqua; */
+}
+
+.enter .photo {
+    width: 50vw;
+    /* background-color: red; */
+    position: relative;
+}
+
+.enter .photo>img {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+.enter .welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.enter .welcome p {
+    padding-bottom: 50px;
+    font-size: 80px;
+    font-style: italic;
+}
+
+.enter .welcome button {
+    font-size: 70px;
+    color: black;
+    background: transparent;
+    border: none;
+    width: 30%;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+.categories p {
+    font-size: 50px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.pizza, .kebab, .suszi, .pierogi, .inne {
+    height: 200px;
+    border-top: 1px solid black;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.opinie {
+    height: 200px;
+    background: coral;
+    text-align: center;
+    font-size: 30px;
+}
+
+footer {
+    height: 200px;
+    background: darkcyan;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+
+
