@@ -23,7 +23,7 @@ $conn;
     <div class="top"></div>
     <header>
         <div class="container">
-            <a href="index.html"><img src="img/logo.png" alt="logo" class="logo"></a>
+            <a href="index.php"><img src="img/logo.png" alt="logo" class="logo"></a>
             <nav>
                 <ul>
                     <li><a href="#" class="homeBtn">Home</a></li>

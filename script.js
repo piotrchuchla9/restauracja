@@ -42,7 +42,7 @@ $("document").ready(function() {
 
     $(".pizzaBtn").click(function() {
         $('html,body').animate({
-            scrollTop: $(".pizza").offset().top},
+            scrollTop: $(".categories").offset().top},
             'slow');
     });
 

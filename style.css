@@ -184,11 +184,12 @@ main {
     font-weight: bold;
     text-transform: uppercase;
 }
-.pizza, .kebab, .suszi, .pierogi, .inne {
+.pizza, .zupa, .suszi, .pierogi, .inne {
     height: 200px;
     border-top: 1px solid black;
     font-size: 30px;
     text-align: center;
+    padding-top: 140px;
 }
 
 
