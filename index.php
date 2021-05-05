@@ -86,7 +86,7 @@ $conn;
             <div>
             <?php
 
-                $sql = "SELECT * FROM menu WHERE Menu_ID = 30;";
+                $sql = "SELECT * FROM menu WHERE Menu_ID = 20;";
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
 
