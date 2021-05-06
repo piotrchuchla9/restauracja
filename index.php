@@ -1,6 +1,9 @@
 <?PHP
 require_once "php/dbh.inc.php"
 ?>
+<script>
+    $('h3 span:first-child').after("<span class=\"dots\"> </span>");
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +20,7 @@ require_once "php/dbh.inc.php"
 </head>
 
 <body>
-$conn;
+    $conn;
 
 
     <div class="top"></div>
@@ -36,8 +39,8 @@ $conn;
 
         <div class="category">
             <ul>
-                <li><a href="#" class="pizzaBtn">Pizza</a></li>
-                <li><a href="#" class="zupaBtn">Zupa</a></li>
+                <li><a href="#" class="pizzaBtn">Pizze</a></li>
+                <li><a href="#" class="zupaBtn">Zupy</a></li>
                 <li><a href="#" class="susziBtn">Suszi</a></li>
                 <li><a href="#" class="pierogiBtn">Pierogi</a></li>
                 <li><a href="#" class="inneBtn">Inne</a></li>
@@ -60,31 +63,44 @@ $conn;
         <div class="food">
             <div class="categories">
                 <p>nasze menu</p>
-            </div>
-            <div class="pizza">
-                <p>pizza</p>
-            </div>
-            <div class="zupa">
-                <p>zupa</p>
-            </div>
-            <div class="suszi">
-                <p>suszi</p>
-            </div>
-            <div class="pierogi">
-                <p>pierogi</p>
-            </div>
-            <div class="inne">
-                <p>inne</p>
+
+                <div class="pizza">
+                    <p>pizza</p>
+                    <div class="group-header">
+
+                        <?php
+                        while ($row = mysqli_fetch_array($query)) {
+                            echo "<h3>";
+                            echo "<span>" . $row['Nazwa'] . "</span>";
+                            echo "<span>" . $row['Cena'] . "</span>";
+                            echo "</h3>";
+                            echo "<p>" . $row['Opis'] . "<p>";
+                        }
+
+                        ?>
+                    </div>
+                </div>
+                <div class="zupa">
+                    <p>zupa</p>
+                </div>
+                <div class="suszi">
+                    <p>suszi</p>
+                </div>
+                <div class="pierogi">
+                    <p>pierogi</p>
+                </div>
+                <div class="inne">
+                    <p>inne</p>
+                </div>
             </div>
         </div>
 
 
 
- 
         <div class="opinie">
             opinie
             <div>
-            <?php
+                <?php
 
                 $sql = "SELECT * FROM menu WHERE Kategoria = 'Pizza';";
                 $result = mysqli_query($conn, $sql);
@@ -96,11 +112,11 @@ $conn;
                     }
                 }
 
-            ?>
+                ?>
             </div>
-            
+
         </div>
-        
+
         <footer>footer</footer>
     </main>
 
