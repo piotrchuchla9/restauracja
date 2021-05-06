@@ -12,5 +12,10 @@ if(!$conn){
 }
 
 
-$query = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Pizza'");
+$pizze = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Pizza'");
 
+$zupy = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Zupa'");
+
+$sushi = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Sushi'");
+
+$pierogi = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Pierogi'");

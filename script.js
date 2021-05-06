@@ -18,7 +18,7 @@ $("document").ready(function() {
 
     $(".menuBtn").click(function() {
         $('html,body').animate({
-            scrollTop: $(".categories").offset().top},
+            scrollTop: $("#tabs").offset().top},
             'slow');
     });
 
@@ -36,13 +36,13 @@ $("document").ready(function() {
 
     $(".buttonMenu").click(function() {
         $('html,body').animate({
-            scrollTop: $(".categories").offset().top},
+            scrollTop: $("#tabs").offset().top},
             'slow');
     });
 
     $(".pizzaBtn").click(function() {
         $('html,body').animate({
-            scrollTop: $(".categories").offset().top},
+            scrollTop: $("#Pizza").offset().top},
             'slow');
     });
 
