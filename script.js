@@ -71,6 +71,8 @@ $("document").ready(function() {
     });
 
 
+    var widthFoodBtn = $(".aFoodBtn").width();
+    $(".foodBtn").css("width", widthFoodBtn);
 
     
 });

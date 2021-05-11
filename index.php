@@ -49,19 +49,12 @@ document.getElementById("myLink").click();
                     <li><a href="#" class="menuBtn">Menu</a></li>
                     <li><a href="#" class="opinieBtn">Opinie</a></li>
                     <li><a href="#" class="kontaktBtn">Kontakt</a></li>
+                    <li><a href="#" class="aCart"><img src="/img/cart.png" alt="cart" class="cart"></a></li>
                 </ul>
             </nav>
         </div>
 
-        <div class="category">
-            <ul>
-                <li><a href="#" class="pizzaBtn">Pizze</a></li>
-                <li><a href="#" class="zupaBtn">Zupy</a></li>
-                <li><a href="#" class="susziBtn">Suszi</a></li>
-                <li><a href="#" class="pierogiBtn">Pierogi</a></li>
-                <li><a href="#" class="inneBtn">Inne</a></li>
-            </ul>
-        </div>
+        
     </header>
 
 
@@ -82,18 +75,18 @@ document.getElementById("myLink").click();
 <div class="w3-container  w3-padding-64 w3-xxlarge" id="tabs">
   <div id="tabs" class="w3-content">
     <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">NASZE MENU</h1>
-    <div  class="w3-row w3-center w3-border w3-border-dark-grey">
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Pizza');">
-        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pizza</div>
+    <div  class="w3-row w3-center w3-border w3-border-dark-grey foodBtnCont">
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Pizza');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Pizza</div>
       </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Zupy');">
-        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Zupy</div>
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Zupy');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Zupy</div>
       </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Sushi');">
-        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Sushi</div>
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Sushi');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Sushi</div>
       </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Pierogi');">
-        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pierogi</div>
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Pierogi');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Pierogi</div>
       </a>
     </div>
 
