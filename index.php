@@ -1,6 +1,23 @@
 <?PHP
 require_once "php/dbh.inc.php"
 ?>
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-red";
+}
+
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,12 +49,12 @@ require_once "php/dbh.inc.php"
                     <li><a href="#" class="menuBtn">Menu</a></li>
                     <li><a href="#" class="opinieBtn">Opinie</a></li>
                     <li><a href="#" class="kontaktBtn">Kontakt</a></li>
-                    <li><input type="button" id="cartButton"  data-target="#cartModal"></input></li>
+                    <li><input type="button" src="/img/cart.png" data-toggle="modal" data-target="#cartModal"></input></li>
                 </ul>
             </nav>
         </div>
 
-
+        
     </header>
 
 
@@ -52,129 +69,135 @@ require_once "php/dbh.inc.php"
                 <img src="img/tlo_logo.png" alt="tlo_logo">
             </div>
         </div>
-
-
-
         <div class="food">
 
-            <!-- Menu Container -->
-            <div class="w3-container  w3-padding-64 w3-xxlarge" id="tabs">
-                <div id="tabs" class="w3-content">
-                    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">NASZE MENU</h1>
-                    <div class="w3-row w3-center w3-border w3-border-dark-grey foodBtnCont">
-                        <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Pizza');">
-                            <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Pizza</div>
-                        </a>
-                        <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Zupy');">
-                            <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Zupy</div>
-                        </a>
-                        <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Sushi');">
-                            <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Sushi</div>
-                        </a>
-                        <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Pierogi');">
-                            <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Pierogi</div>
-                        </a>
-                    </div>
+                <!-- Menu Container -->
+<div class="w3-container  w3-padding-64 w3-xxlarge" id="tabs">
+  <div id="tabs" class="w3-content">
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">NASZE MENU</h1>
+    <div  class="w3-row w3-center w3-border w3-border-dark-grey foodBtnCont">
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Pizza');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Pizza</div>
+      </a>
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Zupy');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Zupy</div>
+      </a>
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Sushi');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Sushi</div>
+      </a>
+      <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Pierogi');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Pierogi</div>
+      </a>
+    </div>
 
-                    <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
-                        <?php
-                        while ($row = mysqli_fetch_array($pizze)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
-                        }
-                        ?>
-                    </div>
-                    <div id="Zupy" class="w3-container menu w3-padding-32 w3-white">
-                        <?php
-                        while ($row = mysqli_fetch_array($zupy)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
-                        }
-                        ?>
-                    </div>
-                    <div id="Sushi" class="w3-container menu w3-padding-32 w3-white">
-                        <?php
-                        while ($row = mysqli_fetch_array($sushi)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
-                        }
-                        ?>
-                    </div>
-                    <div id="Pierogi" class="w3-container menu w3-padding-32 w3-white">
-                        <?php
-                        while ($row = mysqli_fetch_array($pierogi)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
-                        }
-                        ?>
-                    </div>
-
-
-                    <!--KOSZYK-->
+    <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
+        <?php
+            while ($row = mysqli_fetch_array($pizze)) {
+                echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+            }
+        ?>
+    </div>
+    <div id="Zupy" class="w3-container menu w3-padding-32 w3-white">
+        <?php
+            while ($row = mysqli_fetch_array($zupy)) {
+                echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+            }
+        ?>
+    </div>
+    <div id="Sushi" class="w3-container menu w3-padding-32 w3-white">
+        <?php
+            while ($row = mysqli_fetch_array($sushi)) {
+                echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+            }
+        ?>
+    </div>
+    <div id="Pierogi" class="w3-container menu w3-padding-32 w3-white">
+        <?php
+            while ($row = mysqli_fetch_array($pierogi)) {
+                echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+            }
+        ?>
+    </div>
 
 
-
-                    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header border-bottom-0">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        Twoje zamówienia
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
+        <div class="opinie">
+            
+            opinie
+            
+            
+</div>
 
 
 
-                                    <table class="table table-image">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Danie</th>
-                                                <th scope="col">Cena/szt</th>
-                                                <th scope="col">Ilość</th>
-                                                <th scope="col">Suma</th>
-                                                <th scope="col">Usuń</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+        </div>
 
-                                            <tr>
-                                                <td>Jakieś danie</td>
-                                                <td>89zł</td>
-                                                <td class="qty"><input type="text" class="form-control" id="input1" value="2"></td>
-                                                <td>178zł</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="d-flex justify-content-end">
-                                        <h5>Do zapłaty: <span class="price text-success">89$</span></h5>
-                                    </div>
-                                </div>
-                                <div class="modal-footer border-top-0 d-flex justify-content-between">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                                    <button type="button" class="btn btn-success">Zamów</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="opinie">
-                        opinie
+        <footer>footer</footer>
+        
+        
+        <!--KOSZYK-->
 
-                    </div>
+        
+        
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Your Shopping Cart
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-                    <footer>footer</footer>
+
+
+        <table class="table table-image">
+          <thead>
+            <tr>
+
+              <th scope="col">Danie</th>
+              <th scope="col">Cena/szt</th>
+              <th scope="col">Ilość</th>
+              <th scope="col">Suma</th>
+              <th scope="col">Usuń</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>Jakieś danie</td>
+              <td>89zł</td>
+              <td class="qty"><input type="text" class="form-control" id="input1" value="2"></td>
+              <td>178zł</td>
+              <td>
+                <a href="#" class="btn btn-danger btn-sm">
+                  <i class="fa fa-times"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+        <div class="d-flex justify-content-end">
+          <h5>Do zapłaty: <span class="price text-success">89$</span></h5>
+        </div>
+      </div>
+      <div class="modal-footer border-top-0 d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+        <button type="button" class="btn btn-success">Zamów</button>
+      </div>
+    </div>
+  </div>
+
     </main>
 
 

@@ -55,6 +55,10 @@ $('#cartButton').click(function(){
     $('#cartModal').modal('show');
 });
 
+//dodawanie do koszyka
+
+
+
 // Tabbed Menu
 function openMenu(evt, menuName) {
     var i, x, tablinks;
