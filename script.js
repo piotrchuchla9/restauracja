@@ -43,6 +43,14 @@ $("document").ready(function() {
     $(".foodBtn").css("width", widthFoodBtn);
 
     
+
+
+    //koszyk
+$(document).ready(function() {  
+  $('#cartModal').modal('show');
+});
+
+
 });
 
 

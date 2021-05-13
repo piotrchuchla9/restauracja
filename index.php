@@ -49,7 +49,7 @@ document.getElementById("myLink").click();
                     <li><a href="#" class="menuBtn">Menu</a></li>
                     <li><a href="#" class="opinieBtn">Opinie</a></li>
                     <li><a href="#" class="kontaktBtn">Kontakt</a></li>
-                    <li><a href="#" class="aCart"><img src="/img/cart.png" alt="cart" class="cart"></a></li>
+                    <li><input type="button" src="/img/cart.png" data-toggle="modal" data-target="#cartModal"></input></li>
                 </ul>
             </nav>
         </div>
@@ -129,11 +129,100 @@ document.getElementById("myLink").click();
 
 
         <div class="opinie">
+            
             opinie
+            
+            
+</div>
+
+
 
         </div>
 
         <footer>footer</footer>
+        
+        
+        <!--KOSZYK-->
+
+        
+        
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Your Shopping Cart
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <?php
+$cartItem = $shoppingCart->getMemberCartItem($member_id);
+if (! empty($cartItem)) {
+    $item_total = 0;
+    ?>	
+
+        <table class="table table-image">
+          <thead>
+            <tr>
+
+              <th scope="col">Danie</th>
+              <th scope="col">Cena/szt</th>
+              <th scope="col">Ilość</th>
+              <th scope="col">Suma</th>
+              <th scope="col">Usuń</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          <?php
+    foreach ($cartItem as $item) ?>
+
+				<tr>
+                    <td
+                        style="text-align: left; border-bottom: #F0F0F0 1px solid;"><strong><?php echo $item["name"]; ?></strong></td>
+                    <td
+                        style="text-align: left; border-bottom: #F0F0F0 1px solid;"><?php echo $item["code"]; ?></td>
+                    <td
+                        style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["quantity"]; ?></td>
+                    <td
+                        style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo "$".$item["price"]; ?></td>
+                    <td
+                        style="text-align: center; border-bottom: #F0F0F0 1px solid;"><a
+                        href="index.php?action=remove&id=<?php echo $item["cart_id"]; ?>"
+                        class="btnRemoveAction"><img src="icon-delete.png" alt="icon-delete" title="Remove Item" /></a></td>
+                </tr>
+				<?php
+        $item_total += ($item["price"] * $item["quantity"]);}
+    ?>
+
+
+            <tr>
+              <td>Vans Sk8-Hi MTE Shoes</td>
+              <td>89$</td>
+              <td class="qty"><input type="text" class="form-control" id="input1" value="2"></td>
+              <td>178$</td>
+              <td>
+                <a href="#" class="btn btn-danger btn-sm">
+                  <i class="fa fa-times"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+        <div class="d-flex justify-content-end">
+          <h5>Do zapłaty: <span class="price text-success">89$</span></h5>
+        </div>
+      </div>
+      <div class="modal-footer border-top-0 d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+        <button type="button" class="btn btn-success">Zamów</button>
+      </div>
+    </div>
+  </div>
     </main>
 
 
