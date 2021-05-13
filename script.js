@@ -1,6 +1,6 @@
-$("document").ready(function() { 
+$("document").ready(function () {
     //wysokosci okien
-    var wysokoscHeader = $("header").height();  
+    var wysokoscHeader = $("header").height();
     $("main").css("top", wysokoscHeader);
     var wysokoscOkna = $(window).height();
     var wysokoscEnter = wysokoscOkna - wysokoscHeader;
@@ -8,33 +8,38 @@ $("document").ready(function() {
     $(".photo").css("height", wysokoscEnter);
 
     //scrollowanie
-    $(".homeBtn").click(function() {
+    $(".homeBtn").click(function () {
         $('html,body').animate({
-            scrollTop: $(".top").offset().top},
+            scrollTop: $(".top").offset().top
+        },
             'slow');
     });
 
-    $(".menuBtn").click(function() {
+    $(".menuBtn").click(function () {
         $('html,body').animate({
-            scrollTop: $("#tabs").offset().top},
+            scrollTop: $("#tabs").offset().top
+        },
             'slow');
     });
 
-    $(".opinieBtn").click(function() {
+    $(".opinieBtn").click(function () {
         $('html,body').animate({
-            scrollTop: $(".opinie").offset().top},
+            scrollTop: $(".opinie").offset().top
+        },
             'slow');
     });
 
-    $(".kontaktBtn").click(function() {
+    $(".kontaktBtn").click(function () {
         $('html,body').animate({
-            scrollTop: $("footer").offset().top},
+            scrollTop: $("footer").offset().top
+        },
             'slow');
     });
 
-    $(".buttonMenu").click(function() {
+    $(".buttonMenu").click(function () {
         $('html,body').animate({
-            scrollTop: $("#tabs").offset().top},
+            scrollTop: $("#tabs").offset().top
+        },
             'slow');
     });
 
@@ -43,14 +48,25 @@ $("document").ready(function() {
     $(".foodBtn").css("width", widthFoodBtn);
 
     
-
-
-    //koszyk
-$(document).ready(function() {  
-  $('#cartModal').modal('show');
 });
 
-
+//koszyk
+$('#cartButton').click(function(){
+    $('#cartModal').modal('show');
 });
 
-
+// Tabbed Menu
+function openMenu(evt, menuName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("menu");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+    }
+    document.getElementById(menuName).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-red";
+}
+document.getElementById("myLink").click();
