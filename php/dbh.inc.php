@@ -20,7 +20,7 @@ $sushi = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Sushi'");
 
 $pierogi = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Pierogi'");
 
-$zamówienie = mysqli_query($conn, "SELECT * FROM zamówienia WHERE Zamówienie_ID = 'Pierogi'");
+$addtocart = mysqli_query($conn, "SELECT * FROM Menu WHERE Menu_ID = $_POST[id]");
 
 class DBController
 {

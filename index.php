@@ -49,7 +49,9 @@ function openMenu(evt, menuName) {
                     <li><a href="#" class="menuBtn">Menu</a></li>
                     <li><a href="#" class="opinieBtn">Opinie</a></li>
                     <li><a href="#" class="kontaktBtn">Kontakt</a></li>
-                    <li><input type="button" src="/img/cart.png" data-toggle="modal" data-target="#cartModal"></input></li>
+                    <li><button type="submit" style="border: 0; background: transparent" data-toggle="modal" data-target="#cartModal">
+                        <img src="img/cart2.png" alt="Koszyk" />
+                        </button></li>
                 </ul>
             </nav>
         </div>
@@ -94,8 +96,10 @@ function openMenu(evt, menuName) {
         <?php
             while ($row = mysqli_fetch_array($pizze)) {
                 echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
                 echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                 echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+               
             }
         ?>
     </div>
@@ -103,6 +107,7 @@ function openMenu(evt, menuName) {
         <?php
             while ($row = mysqli_fetch_array($zupy)) {
                 echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
                 echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                 echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
             }
@@ -112,6 +117,7 @@ function openMenu(evt, menuName) {
         <?php
             while ($row = mysqli_fetch_array($sushi)) {
                 echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
                 echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                 echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
             }
@@ -121,6 +127,7 @@ function openMenu(evt, menuName) {
         <?php
             while ($row = mysqli_fetch_array($pierogi)) {
                 echo "<h1><b>" . $row['Menu_ID'] . "." . $row['Nazwa'] . "</b>";
+                echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
                 echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                 echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
             }
@@ -165,7 +172,7 @@ function openMenu(evt, menuName) {
           <thead>
             <tr>
 
-              <th scope="col">Danie</th>
+              <th scope="col" style="float:left;">Danie</th>
               <th scope="col">Cena/szt</th>
               <th scope="col">Ilość</th>
               <th scope="col">Suma</th>
@@ -173,7 +180,12 @@ function openMenu(evt, menuName) {
             </tr>
           </thead>
           <tbody>
-
+          <?php
+            while ($row = mysqli_fetch_array($addtocart)) {
+                echo "<tr><td>" . $row['Nazwa'] . "</td>";
+                echo "<td>" . $row['Cena'] . "</td></tr>";
+            }
+        ?>
             <tr>
               <td>Jakieś danie</td>
               <td>89zł</td>
