@@ -74,3 +74,4 @@ function openMenu(evt, menuName) {
     evt.currentTarget.firstElementChild.className += " w3-red";
 }
 document.getElementById("myLink").click();
+
