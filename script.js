@@ -47,17 +47,14 @@ $("document").ready(function () {
     var widthFoodBtn = $(".aFoodBtn").width();
     $(".foodBtn").css("width", widthFoodBtn);
 
-    
+    var positionsInCart = $('.inCart').length;
+    $('.countCart').append(positionsInCart);
 });
 
 //koszyk
 $('#cartButton').click(function(){
     $('#cartModal').modal('show');
 });
-
-//dodawanie do koszyka
-
-
 
 // Tabbed Menu
 function openMenu(evt, menuName) {
@@ -74,4 +71,3 @@ function openMenu(evt, menuName) {
     evt.currentTarget.firstElementChild.className += " w3-red";
 }
 document.getElementById("myLink").click();
-

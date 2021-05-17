@@ -78,12 +78,20 @@ nav a {
     transition: 0.25s;
 }
 
-nav a.aCart {
-    border-bottom: none;
+.cart {
+    border: 0;
+    background: transparent;
 }
 
-nav a.aCart:hover {
-    border-bottom: none;
+.countCart {
+    float: right;
+    display: inline;
+    background: rgb(212, 122, 4);
+    border-radius: 25px;
+    color: white;
+    padding: 4px;
+    min-width: 20px;
+    text-align: center;
 }
 
 nav a:hover {
@@ -92,22 +100,6 @@ nav a:hover {
     border-bottom: 5px solid red;
 }
 
-/*guzik koszyka*/
-
-input[type=button] {
-    padding:5px 15px; 
-    background-image: "/img/cart.png"; 
-    cursor:pointer;
-}
-
-input[type=submit] {
-    padding:5px 15px; 
-    background:#ccc; 
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-}
 
 
 
@@ -203,7 +195,28 @@ main {
 
 
 #cartModal {
-    display: none;}
+    display: none;
+}
+
+
+
+input[type=button] {
+    padding:5px 15px; 
+    background-image: "/img/cart.png"; 
+    cursor:pointer;
+}
+    
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+
+
 
 
 .opinie {
