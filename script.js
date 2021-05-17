@@ -7,6 +7,13 @@ $("document").ready(function () {
     $(".welcome").css("height", wysokoscEnter);
     $(".photo").css("height", wysokoscEnter);
 
+    var wysokoscOpinie = $(".opinie").height();
+    $(".opinieBackground").css("height", wysokoscOpinie);
+
+    var wysokoscDane = $(".dane").height();
+    wysokoscDane = wysokoscDane + $(".copy").height();
+    $(".daneBackground").css("height", wysokoscDane);
+
     
 
     //scrollowanie
