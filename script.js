@@ -7,6 +7,8 @@ $("document").ready(function () {
     $(".welcome").css("height", wysokoscEnter);
     $(".photo").css("height", wysokoscEnter);
 
+    
+
     //scrollowanie
     $(".homeBtn").click(function () {
         $('html,body').animate({
@@ -49,6 +51,20 @@ $("document").ready(function () {
 
     var positionsInCart = $('.inCart').length;
     $('.countCart').append(positionsInCart);
+
+    $(".startBtn").click();
+
+
+    //opinie slider
+    $("#slideshow > div:gt(0)").hide();
+    setInterval(function() { 
+        $('#slideshow > div:first')
+        .fadeOut(1000)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('#slideshow');
+    }, 3000);
 });
 
 //koszyk

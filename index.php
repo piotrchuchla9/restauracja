@@ -86,7 +86,7 @@ require_once "php/dbh.inc.php"
                             echo "<h1><b>" . $row['Nazwa'] . "</b>";
                             echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
                             echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+                            echo "<p class='w3-text-grey' style='word-wrap: break-word;'>" . $row['Opis'] . "</p><hr>";
                         }
                         ?>
                     </div>
@@ -181,11 +181,48 @@ require_once "php/dbh.inc.php"
                         </div>
                     </div>
                     <div class="opinie">
-                        opinie
+                        <p>OPINIE</p>
+                        <div id="slideshow">
+                            <div class="slide">
+                                <div class="slideHead">Tomek</div>
+                                <div class="slideContent">Profesionalnie zapakowanie i genialnie przyrządzone sushi!
+                                    Na pewno nie raz jeszcze coś zamówię z tej restauracji.</div>
+                            </div>
+                            <div class="slide">
+                                <div class="slideHead">Ola</div>
+                                <div class="slideContent">Bywamy z rodziną bardzo często i za każdym razem tak samo pysznie :)
+                                    moja ulubiona restauracja w Rzeszowie ♥️
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class="slideHead">Piotrek</div>
+                                <div class="slideContent">Smaczne jedzienie i miła obsługa, przyjemny wystrój.
+                                    Świetne miejsce na spotkanie że znajomymi 😄</div>
+                            </div>
+                            <div class="slide">
+                                <div class="slideHead">Marysia</div>
+                                <div class="slideContent">Pyszna pizza na cienkim cieście! Szybka dostawa i wysokiej jakości
+                                    składniki! Polecam</div>
+                            </div>
+                            <div class="slide">
+                                <div class="slideHead">Daniel i Magda</div>
+                                <div class="slideContent">Pyszne jedzenie, czas oczekiwania jak na dobra restauracje przystało!
+                                    Polecamy i pozdrawiamy 😘</div>
+                            </div>
+                        </div>
 
                     </div>
 
-                    <footer>footer</footer>
+                    <footer>
+                        <div>Tu jesteśmy!</div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2563.3229862561348!2d22.005592916278296!3d50.024043425877565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cfa50df98ace3%3A0x86e562765f4eba75!2sNowe%20Miasto%2C%2035-309%20Rzesz%C3%B3w!5e0!3m2!1spl!2spl!4v1621292311287!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <div class="dane">
+                                <p><i class="bi bi-telephone">e</i></p>
+                            </div>
+                            <div class="copy">&copy; P&R Restaurant</div>
+                        
+                    </footer>
+
     </main>
 
 

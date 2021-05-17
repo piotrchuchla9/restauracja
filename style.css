@@ -218,19 +218,53 @@ input[type=submit] {
 
 
 
-
 .opinie {
-    height: 200px;
-    background: coral;
+    margin-top: 40px;
+}
+
+.opinie > p {
+    font-size: 60px;
+    text-align: center;
+}
+
+#slideshow { 
+    margin: 50px auto; 
+    position: relative; 
+    width: 80%; 
+    height: 240px;
+    padding: 10px; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); 
+    background-color: rgba(212, 122, 4, 0.1);
+  }
+  
+#slideshow > div.slide { 
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    right: 10px; 
+    bottom: 10px; 
+  }
+
+.slideHead {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.slideContent {
     text-align: center;
     font-size: 30px;
 }
 
 footer {
-    height: 200px;
-    background: darkcyan;
+    background: transparent;
     text-align: center;
     font-size: 30px;
+}
+
+.copy {
+    margin-top: 20px;
 }
 
 
