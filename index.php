@@ -15,7 +15,7 @@ require_once "php/dbh.inc.php"
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>P&R Restaurant - Zapraszamy!</title>
 </head>
 
 <body>
