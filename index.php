@@ -66,7 +66,7 @@ require_once "php/dbh.inc.php"
                 <div id="tabs" class="w3-content">
                     <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">NASZE MENU</h1>
                     <div class="w3-row w3-center w3-border w3-border-dark-grey foodBtnCont">
-                        <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Pizza');">
+                        <a href="javascript:void(0)" class="aFoodBtn startBtn" onclick="openMenu(event, 'Pizza');">
                             <div class="w3-col s4 tablink w3-padding-large w3-hover-red foodBtn">Pizza</div>
                         </a>
                         <a href="javascript:void(0)" class="aFoodBtn" onclick="openMenu(event, 'Zupy');">

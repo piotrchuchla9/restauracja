@@ -1,3 +1,7 @@
+$(window).load(function() {
+    $('.startBtn').click();
+});
+
 $("document").ready(function () {
     //wysokosci okien
     var wysokoscHeader = $("header").height();
@@ -15,6 +19,7 @@ $("document").ready(function () {
     $(".daneBackground").css("height", wysokoscDane);
 
     
+
 
     //scrollowanie
     $(".homeBtn").click(function () {
@@ -59,7 +64,6 @@ $("document").ready(function () {
     var positionsInCart = $('.inCart').length;
     $('.countCart').append(positionsInCart);
 
-    $(".startBtn").click();
 
 
     //opinie slider
@@ -72,6 +76,8 @@ $("document").ready(function () {
         .end()
         .appendTo('#slideshow');
     }, 3000);
+
+
 });
 
 //koszyk
