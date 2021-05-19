@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap');
+
+*{
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    background: rgb(245, 220, 197);
+}
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    z-index: 0;
+    display: block;
+}
+
+header{
+    background: orange;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+header::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.category{
+    background: darkorange;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+
+}
+
+.logo {
+    position: absolute;
+    height: 80%;
+    float: left;
+    padding:0;
+    padding-bottom: 30px;
+    margin-top: 15px;
+}
+
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    margin: 0;
+    display: inline-block;
+    margin-left: 70px;
+    padding: 25px 0;
+}
+
+nav a {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    border-bottom: 3px solid rgb(211, 103, 103);
+    transition: 0.25s;
+}
+
+.cart {
+    border: 0;
+    background: transparent;
+}
+
+.countCart {
+    float: right;
+    display: inline;
+    background: rgb(212, 122, 4);
+    border-radius: 25px;
+    color: white;
+    padding: 4px;
+    min-width: 20px;
+    text-align: center;
+}
+
+nav a:hover {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 5px solid red;
+}
+
+
+
+
+.menu {
+    display: none;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+
+
+main {
+    height: 100vh;
+    position: absolute;
+}
+
+.enter {
+    display: flex;
+}
+
+.enter .welcome {
+    width: 50vw;
+    /* background-color: aqua; */
+}
+
+.enter .photo {
+    width: 50vw;
+    /* background-color: red; */
+    position: relative;
+}
+
+.enter .photo>img {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+.enter .welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.enter .welcome p {
+    padding-bottom: 50px;
+    font-size: 80px;
+    font-style: italic;
+}
+
+.enter .welcome button {
+    font-size: 70px;
+    color: black;
+    background: transparent;
+    border: none;
+    width: 30%;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+
+
+.foodBtnCont {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.foodBtn {
+    flex-shrink: 0;
+}
+
+.categories p {
+    font-size: 50px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.pizza, .zupa, .suszi, .pierogi, .inne {
+    height: 200px;
+    border-top: 1px solid black;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 140px;
+}
+
+
+#cartModal {
+    display: none;
+}
+
+
+
+input[type=button] {
+    padding:5px 15px; 
+    background-image: "/img/cart.png"; 
+    cursor:pointer;
+}
+    
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+
+
+
+.opinie {
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.opinieBackground {
+    background-color: orange;
+    width: 100vw;
+    height: 500px;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+
+.opinie > p {
+    font-size: 60px;
+    text-align: center;
+}
+
+#slideshow { 
+    margin: 50px auto; 
+    position: relative; 
+    width: 80%; 
+    height: 240px;
+    padding: 10px; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); 
+    background-color: rgba(245, 220, 197, 0.9);
+  }
+  
+#slideshow > div.slide { 
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    right: 10px; 
+    bottom: 10px; 
+  }
+
+.slideHead {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.slideContent {
+    text-align: center;
+    font-size: 30px;
+}
+
+footer {
+    background: transparent;
+    text-align: center;
+    font-size: 30px;
+}
+
+.tujestesmy {
+    font-size: 60px;
+}
+
+
+
+.copy {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.dane {
+    font-size: 40px;
+    margin-top: 20px;;
+}
+
+.daneKontakt {
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+iframe {
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.daneBackground {
+    background-color: orange;
+    width: 100vw;
+    height: 500px;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+
+.tel {
+    margin-right: 40px;
+    display: inline-table;
+}
+
+.adr {
+    display: inline-block;
+}
+
+.tel > svg {
+    padding-right: 5px;
+    display: inline-table;
+}
+
+.tel > div {
+    display: inline-block;
+}
+
+.adr > svg {
+    display: inline-table;
+}
+
+.adr > div {
+    display: inline-block;
+}
+
+.email > svg {
+    display: inline-table;
+}
+
+.email > div {
+    display: inline-block;
+}
+
+
+
+
