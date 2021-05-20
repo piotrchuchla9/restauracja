@@ -100,3 +100,34 @@ function openMenu(evt, menuName) {
     evt.currentTarget.firstElementChild.className += " w3-red";
 }
 document.getElementById("myLink").click();
+
+
+//dodaj do koszyka tu ma byc, ale narazie jest wyciagniecie menu_ID z diva gdzie jest przycisk
+function addToCart(obj) {
+    // var siblingB = $(obj).siblings("b");
+    // var danieID = siblingB.eq(0).children("span");
+    // danieID.css("color", "red");
+    var log = obj.parentElement.outerHTML;
+    log = Array.from(log);
+    for (var i = 0; i < 29; i++) {
+        log.shift();
+    }
+
+    var a = log[0];
+    var b = log[1];
+    var c = log[2];
+    var d = log[3];
+    var valueStr;
+
+    if(b == '.'){
+        valueStr = a;
+    }
+    else if(c == '.'){
+        valueStr = a + b;
+    }
+    else if(d == '.'){
+        valueStr = a + b + c;
+    }
+    var value = parseInt(valueStr);
+    alert("Type: " + typeof(value) + "\nmenu_ID: " + value);
+}

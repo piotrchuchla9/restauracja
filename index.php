@@ -83,8 +83,8 @@ require_once "php/dbh.inc.php"
                     <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
                         <?php
                         while ($row = mysqli_fetch_array($pizze)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
+                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
+                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
                             echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey' style='word-wrap: break-word;'>" . $row['Opis'] . "</p><hr>";
                         }
@@ -93,8 +93,8 @@ require_once "php/dbh.inc.php"
                     <div id="Zupy" class="w3-container menu w3-padding-32 w3-white">
                         <?php
                         while ($row = mysqli_fetch_array($zupy)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
+                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
+                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
                             echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
                         }
@@ -103,8 +103,8 @@ require_once "php/dbh.inc.php"
                     <div id="Sushi" class="w3-container menu w3-padding-32 w3-white">
                         <?php
                         while ($row = mysqli_fetch_array($sushi)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
+                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
+                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
                             echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
                         }
@@ -113,8 +113,8 @@ require_once "php/dbh.inc.php"
                     <div id="Pierogi" class="w3-container menu w3-padding-32 w3-white">
                         <?php
                         while ($row = mysqli_fetch_array($pierogi)) {
-                            echo "<h1><b>" . $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id"/>';
+                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
+                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
                             echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
                         }
