@@ -128,6 +128,9 @@ function addToCart(obj) {
     else if(d == '.'){
         valueStr = a + b + c;
     }
+
     var value = parseInt(valueStr);
     alert("Type: " + typeof(value) + "\nmenu_ID: " + value);
+
+    // value to wartosc menu_ID po klikniecu w dany przycisk 'dodaj do koszyka'
 }
