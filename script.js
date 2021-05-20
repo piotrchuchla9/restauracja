@@ -107,6 +107,9 @@ function addToCart(obj) {
     // var siblingB = $(obj).siblings("b");
     // var danieID = siblingB.eq(0).children("span");
     // danieID.css("color", "red");
+
+    document.cookie = 'id=' + null;
+
     var log = obj.parentElement.outerHTML;
     log = Array.from(log);
     for (var i = 0; i < 29; i++) {
@@ -130,7 +133,10 @@ function addToCart(obj) {
     }
 
     var value = parseInt(valueStr);
-    alert("Type: " + typeof(value) + "\nmenu_ID: " + value);
+    //alert("Type: " + typeof(value) + "\nmenu_ID: " + value);
+
+    document.cookie = 'id=' + value;
+    alert(document.cookie);
 
     // value to wartosc menu_ID po klikniecu w dany przycisk 'dodaj do koszyka'
 }
