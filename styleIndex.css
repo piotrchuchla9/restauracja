@@ -200,6 +200,10 @@ main {
     display: none;
 }
 
+.phpAddToCart {
+    display: none;
+}
+
 
 
 input[type=button] {

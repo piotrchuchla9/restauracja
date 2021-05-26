@@ -85,6 +85,7 @@ $('#cartButton').click(function(){
     $('#cartModal').modal('show');
 });
 
+
 // Tabbed Menu
 function openMenu(evt, menuName) {
     var i, x, tablinks;
@@ -136,7 +137,7 @@ function addToCart(obj) {
     //alert("Type: " + typeof(value) + "\nmenu_ID: " + value);
 
     document.cookie = 'id=' + value;
-    alert(document.cookie);
+    //alert(document.cookie);
 
     // value to wartosc menu_ID po klikniecu w dany przycisk 'dodaj do koszyka'
 }

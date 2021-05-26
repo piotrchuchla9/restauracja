@@ -20,41 +20,6 @@ $sushi = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Sushi'");
 
 $pierogi = mysqli_query($conn, "SELECT * FROM Menu WHERE Kategoria = 'Pierogi'");
 
-// $addtocart = mysqli_query($conn, "SELECT * FROM Menu WHERE Menu_ID = $_POST[id]");
-
-
-//add to cart
-
-
-// function addToCart($id) {
-
-//     $serverName = "localhost";
-//     $dbUsername = "root";
-//     $dbPassword = "";
-//     $dbName = "restauracja";
-
-//     $conn = mysqli_connect($serverName, $dbUsername, $dbPassword, $dbName);
-
-//     $sqlName = mysqli_query($conn, "SELECT Nazwa FROM menu WHERE Menu_ID = $id");
-
-//     echo '<tr class="inCart">';
-//     echo    '<td>Jakieś danie </td>';
-//     echo        '<td>89zł</td>';
-//     echo        '<td class="qty"><input type="text" class="form-control" id="input1" style="max-width: 20px; height: 10px; text-align: center;" value="1"></td>';
-//     echo        '<td>89zł</td>';
-//     echo        '<td>';
-//     echo            '<a href="#" class="btn btn-danger btn-sm">';
-//     echo                "<'i class='fa fa-times'></i>";
-//     echo            '</a>';
-//     echo        '</td>';
-//     echo    '</tr>';
-//     echo "<script type='text/javascript'>alert('essa');</script>";
-// }
-// if(array_key_exists('xd',$_POST)){
-//     addToCart($id);
-//  }
-
-
 
 class DBController
 {

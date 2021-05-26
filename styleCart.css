@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap');
+
+*{
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    background: rgb(245, 220, 197);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 7%;
+    font-size: 50px;
+}
+
+.modal-body {
+    margin: auto;
+    margin-top:5%;
+    width: 75%;
+    border: 3px solid orange;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.modal-body button {
+    padding: 10px;
+}
+
+.mainTable {
+    margin-bottom: 50px;
+}
+
+.zamowBtn {
+    margin-left: 50px;
+}
+
+.modal-footer {
+    margin: auto;
+    margin-top: 20px;
+}

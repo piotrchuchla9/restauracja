@@ -14,7 +14,7 @@ require_once "php/dbh.inc.php";
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleIndex.css">
     <title>P&R Restaurant - Zapraszamy!</title>
 </head>
 
@@ -31,9 +31,12 @@ require_once "php/dbh.inc.php";
                     <li><a href="#" class="menuBtn">Menu</a></li>
                     <li><a href="#" class="opinieBtn">Opinie</a></li>
                     <li><a href="#" class="kontaktBtn">Kontakt</a></li>
-                    <li><button type="submit" class="cart" data-toggle="modal" data-target="#cartModal">
+                    <li><button type="submit" class="cart" onclick="window.location='cart.php'">
                             <img src="img/cart2.png" alt="Koszyk" />
                         </button>
+                    <!-- <button type="submit" class="cart" data-toggle="modal" data-target="#cartModal">
+                            <img src="img/cart2.png" alt="Koszyk" />
+                        </button> -->
                         <div class="countCart"></div>
                     </li>
                 </ul>
@@ -80,12 +83,13 @@ require_once "php/dbh.inc.php";
                     </div>
 
                     <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
+
                         <?php
                         while ($row = mysqli_fetch_array($pizze)) {
                             echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
+                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
                             //echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart('. $row['Menu_ID'] .')"/>';
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey' style='word-wrap: break-word;'>" . $row['Opis'] . "</p><hr>";
                         }
                         ?>
@@ -94,8 +98,8 @@ require_once "php/dbh.inc.php";
                         <?php
                         while ($row = mysqli_fetch_array($zupy)) {
                             echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
+                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
                         }
                         ?>
@@ -104,8 +108,8 @@ require_once "php/dbh.inc.php";
                         <?php
                         while ($row = mysqli_fetch_array($sushi)) {
                             echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
+                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
                         }
                         ?>
@@ -114,8 +118,8 @@ require_once "php/dbh.inc.php";
                         <?php
                         while ($row = mysqli_fetch_array($pierogi)) {
                             echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
-                            echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
+                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
+                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
                         }
                         ?>
@@ -153,11 +157,8 @@ require_once "php/dbh.inc.php";
                                         </thead>
 
                                         <tbody>
-
-
-
-                                            <tr class="inCart">
-                                                <td><?php if (!empty($_COOKIE['id'])) {echo $_COOKIE['id'];} ?>. Jakieś danie </td>
+                                            <!-- <tr class="inCart">
+                                                <td><?php //if (!empty($_COOKIE['id'])) {echo $_COOKIE['id'];} ?>. Jakieś danie </td>
                                                 <td>89zł</td>
                                                 <td class="qty"><input type="text" class="form-control" id="input1" style="max-width: 20px; height: 30px; text-align: center;" value="1"></td>
                                                 <td>89zł</td>
@@ -166,7 +167,7 @@ require_once "php/dbh.inc.php";
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                     <div class="d-flex justify-content-end">
