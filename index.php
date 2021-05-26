@@ -1,6 +1,5 @@
 <?PHP
 require_once "php/dbh.inc.php";
-require_once "php/addToCart.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +20,6 @@ require_once "php/addToCart.php";
 
 <body>
     $conn;
-
 
     <div class="top"></div>
     <header>
@@ -86,6 +84,7 @@ require_once "php/addToCart.php";
                         while ($row = mysqli_fetch_array($pizze)) {
                             echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
                             echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart(this)"/>';
+                            //echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart('. $row['Menu_ID'] .')"/>';
                             echo "<span class='w3-right w3-tag w3-round'>" . $row['Cena'] . "</span></h1>";
                             echo "<p class='w3-text-grey' style='word-wrap: break-word;'>" . $row['Opis'] . "</p><hr>";
                         }
@@ -158,9 +157,9 @@ require_once "php/addToCart.php";
 
 
                                             <tr class="inCart">
-                                                <td><?php if (!empty($_COOKIE['id'])) {echo $_COOKIE['id'];} ?> Jakieś danie </td>
+                                                <td><?php if (!empty($_COOKIE['id'])) {echo $_COOKIE['id'];} ?>. Jakieś danie </td>
                                                 <td>89zł</td>
-                                                <td class="qty"><input type="text" class="form-control" id="input1" style="max-width: 20px; height: 10px; text-align: center;" value="1"></td>
+                                                <td class="qty"><input type="text" class="form-control" id="input1" style="max-width: 20px; height: 30px; text-align: center;" value="1"></td>
                                                 <td>89zł</td>
                                                 <td>
                                                     <a href="#" class="btn btn-danger btn-sm">
