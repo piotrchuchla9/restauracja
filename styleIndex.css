@@ -84,15 +84,17 @@ nav a {
     background: transparent;
 }
 
-.countCart {
+#cart_count {
     float: right;
-    display: inline;
+    display: block;
     background: rgb(212, 122, 4);
     border-radius: 25px;
     color: white;
     padding: 4px;
     min-width: 20px;
     text-align: center;
+    height: 25px;
+    font-size: 18px;
 }
 
 nav a:hover {

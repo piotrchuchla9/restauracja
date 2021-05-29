@@ -1,5 +1,12 @@
 <?PHP
-require_once "php/dbh.inc.php";
+session_start();
+
+require_once('php/dataBase.php');
+require_once('php/component.php');
+
+if (isset($_POST['add'])){
+    
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +26,6 @@ require_once "php/dbh.inc.php";
 </head>
 
 <body>
-    $conn;
 
     <div class="top"></div>
     <header>
@@ -34,10 +40,19 @@ require_once "php/dbh.inc.php";
                     <li><button type="submit" class="cart" onclick="window.location='cart.php'">
                             <img src="img/cart2.png" alt="Koszyk" />
                         </button>
-                    <!-- <button type="submit" class="cart" data-toggle="modal" data-target="#cartModal">
+                        <!-- <button type="submit" class="cart" data-toggle="modal" data-target="#cartModal">
                             <img src="img/cart2.png" alt="Koszyk" />
                         </button> -->
-                        <div class="countCart"></div>
+                        <?php
+
+                        if (isset($_SESSION['cart'])){
+                            $count = count($_SESSION['cart']);
+                            echo "<span id=\"cart_count\" class=\"text-warning bg-light\">$count</span>";
+                        }else{
+                            echo "<span id=\"cart_count\" class=\"text-warning bg-light\">0</span>";
+                        }
+
+                        ?>
                     </li>
                 </ul>
             </nav>
@@ -83,44 +98,34 @@ require_once "php/dbh.inc.php";
                     </div>
 
                     <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
-
                         <?php
-                        while ($row = mysqli_fetch_array($pizze)) {
-                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
-                            //echo '<input type="image" style="float:right; width:40px;" src="img/addtocart.png" name="id" onclick="addToCart('. $row['Menu_ID'] .')"/>';
-                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey' style='word-wrap: break-word;'>" . $row['Opis'] . "</p><hr>";
+                        $result = getPizza($conn);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            component($row['Menu_ID'], $row['Nazwa'], $row['Cena'], $row['Opis']);
                         }
                         ?>
                     </div>
                     <div id="Zupy" class="w3-container menu w3-padding-32 w3-white">
                         <?php
-                        while ($row = mysqli_fetch_array($zupy)) {
-                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
-                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+                        $result = getZupy($conn);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            component($row['Menu_ID'], $row['Nazwa'], $row['Cena'], $row['Opis']);
                         }
                         ?>
                     </div>
                     <div id="Sushi" class="w3-container menu w3-padding-32 w3-white">
                         <?php
-                        while ($row = mysqli_fetch_array($sushi)) {
-                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
-                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+                        $result = getSushi($conn);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            component($row['Menu_ID'], $row['Nazwa'], $row['Cena'], $row['Opis']);
                         }
                         ?>
                     </div>
                     <div id="Pierogi" class="w3-container menu w3-padding-32 w3-white">
                         <?php
-                        while ($row = mysqli_fetch_array($pierogi)) {
-                            echo "<h1><b><span class='danieID'>" . $row['Menu_ID'] . ". </span>". $row['Nazwa'] . "</b>";
-                            echo '<button type="submit" style="float:right; width:40px;" name="add" onclick="addToCart(this)"> <img src="img/addtocart.png" alt="addtocart" /> </button>';
-                            echo "<span class='w3-right w3-tag w3-round' style='margin-right: 25px;'>" . $row['Cena'] . "</span></h1>";
-                            echo "<p class='w3-text-grey'>" . $row['Opis'] . "</p><hr>";
+                        $result = getPierogi($conn);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            component($row['Menu_ID'], $row['Nazwa'], $row['Cena'], $row['Opis']);
                         }
                         ?>
                     </div>
@@ -157,17 +162,7 @@ require_once "php/dbh.inc.php";
                                         </thead>
 
                                         <tbody>
-                                            <!-- <tr class="inCart">
-                                                <td><?php //if (!empty($_COOKIE['id'])) {echo $_COOKIE['id'];} ?>. Jakieś danie </td>
-                                                <td>89zł</td>
-                                                <td class="qty"><input type="text" class="form-control" id="input1" style="max-width: 20px; height: 30px; text-align: center;" value="1"></td>
-                                                <td>89zł</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </td>
-                                            </tr> -->
+
                                         </tbody>
                                     </table>
                                     <div class="d-flex justify-content-end">
@@ -182,7 +177,7 @@ require_once "php/dbh.inc.php";
                         </div>
                     </div>
                     <div class="opinie">
-                    <div class="opinieBackground"></div>
+                        <div class="opinieBackground"></div>
 
                         <p>OPINIE</p>
                         <div id="slideshow">
@@ -219,9 +214,9 @@ require_once "php/dbh.inc.php";
                     <footer>
                         <div class="tujestesmy">Tu jesteśmy!</div>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2563.3229862561348!2d22.005592916278296!3d50.024043425877565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cfa50df98ace3%3A0x86e562765f4eba75!2sNowe%20Miasto%2C%2035-309%20Rzesz%C3%B3w!5e0!3m2!1spl!2spl!4v1621292311287!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                            <div class="daneBackground"></div>
-                            <div class="dane">
-                                <div class="daneKontakt">KONTAKT</div>
+                        <div class="daneBackground"></div>
+                        <div class="dane">
+                            <div class="daneKontakt">KONTAKT</div>
                             <div class="tel">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
