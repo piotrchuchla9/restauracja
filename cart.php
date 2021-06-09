@@ -14,7 +14,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleCart.css">
-    <title>Koszyk</title>
+    <title>Document</title>
 </head>
 
 <body>
@@ -39,32 +39,32 @@ session_start();
                     deleteItem($productID);
                 }
 
-
-
                 printCart($conn);
 
-
-
-  ?>     
+            ?>     
     </div>
     
-<<<<<<< HEAD
-    
-=======
-    <?PHP
+    <?php
 
-for($i=0;$i<count($_SESSION['cart']);$i++){
+                $max_id = sprawdz_max_id($conn);
+                $id = $max_id + 1;
 
-            if(isset($_POST['zamow'])){
-                    $menuID = $_POST['productID'];
-                    $porcjaID = $_POST['porcja'];
-                    $ilosc = $_POST['ilosc'];
+                if(isset($_POST['zamow'])) {
+                    $id = sprawdz_max_id($conn);
+                    $id = $id + 1;
+                    $porcja = $_POST['porcja'];
 
-                    add_zamowienie($conn,$menuID,$porcjaID,$ilosc);
-                    deleteItem($menuID);
+                    foreach()
+
+                    
                 }
-            }
+                
+
+
+
+
     ?>
+
 
 
 
