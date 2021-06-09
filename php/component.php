@@ -1,5 +1,7 @@
 <?php
 
+include_once "database.php";
+
 
 function component($productID, $productName, $productPrice, $productDescription)
 {
@@ -54,7 +56,9 @@ function printCart($conn)
                     <th scope="col">Cena/szt</th>
                     <th scope="col">Ilość</th>
                     <th scope="col">Suma</th>
+                    <th scope="col">Porcja</th>
                     <th scope="col">Usuń</th>
+                    
 
                 </tr>
 
@@ -73,20 +77,34 @@ function printCart($conn)
     
     <tbody>
 
+    <form action='zamawianie.php' method='POST'>
     <tr class='inCart'>
         <td style='float: left; width: 70%; text-align: left;'> $licznik. ". $row['Kategoria'] ." - " . $row['Nazwa'] . " </td>
         <td width='10%'>" . $row['Cena'] . "</td>
+        <!--<button name='decqty' onClick='decqty($ilosc)'>-</button>-->
         <td width='10%' class='qty'><input type='text' class='form-control' id='input1' style='max-width: 20px; height: 30px;text-align: center;' value='$ilosc'></td>
+        <!--<button name='incqty'>+</button>-->
         <td width='10%'>".$suma_czesciowa."zł</td>
+        
         <td width='10%'>
-            <form action='../cart.php' method='POST'>
+        <select name='porcja' id='porcja'>
+        <option value='2'>Średnia</option>
+        <option value='1'>Mała</option>
+        <option value='3'>Duża</option>
+        </select>
+        
+        </td>
+
+        <td width='10%'>
+            
             <button type='submit' name='delete'>Usuń</button>
             <input type='hidden' name='productID' value='$item'>
-            </form>
+            
             
         </td>
+        
     </tr>
-
+    
     </tbody>
     
     ";
@@ -103,8 +121,9 @@ function printCart($conn)
         </div>
         <div class="modal-footer border-top-0 d-flex justify-content-between">
             <button type="button" class="btn btn-secondary menuBtn" data-dismiss="modal" onclick="window.location=\'index.php\'">Wróć do MENU</button>
-            <button type="button" class="btn btn-success zamowBtn">Zamów</button>
+            <button type="submit" name="zamow" class="btn btn-success zamowBtn" onclick="window.location=\'zamawianie.php\'" >Zamów</button>
         </div>
+        </form>
     ';
     }
 }
@@ -115,3 +134,65 @@ function deleteItem($productID) {
     header("location: ../cart.php");
     exit();
 }
+
+function sprawdz_max_id($conn)
+{
+
+    $sql = "SELECT sprawdz_max_id() as sprawdz_max_id_info";
+    $statement = mysqli_stmt_init($conn);
+    
+
+    if (!mysqli_stmt_prepare($statement, $sql)) {
+        header("location: ../login.php?error=stmtfailed");
+        exit();
+      }
+
+    //mysqli_stmt_bind_param($statement);
+    mysqli_stmt_execute($statement);
+
+
+    $result = mysqli_stmt_get_result($statement);
+    $row = mysqli_fetch_array($result);
+    $id = $row['sprawdz_max_id_info'];
+
+    return $id;
+}
+
+function order_zamow($conn, $id, $porcja_id, $imie, $nazwisko, $telefon, $adres, $komentarz, $znizka, $platnosc, $cena_ostateczna) {
+
+    $id_klienta = 0;
+
+    $sql = "SELECT Klient_ID FROM klient WHERE Imie = '$imie' AND Nazwisko = '$nazwisko' AND Telefon = '$telefon' AND Adres = '$adres'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    $id_klienta = $row['Klient_ID'];
+
+    if($id_klienta < 1) {
+        $sql = "INSERT INTO klient (Imie, Nazwisko, Telefon, Adres) VALUES ('$imie', '$nazwisko', '$telefon', '$adres')";
+        mysqli_query($conn, $sql);
+        $id_klienta = mysqli_insert_id($conn);
+    }
+
+    
+
+    foreach($_SESSION['cart'] as $item => $ilosc) {
+        $sql = "INSERT INTO zamów VALUES($id, $item, $porcja_id, $ilosc)";
+        //mysqli_query($conn, $sql);
+        
+        if (!$conn -> query($sql)) {
+            echo("Error description: " . $conn -> error);
+            }
+
+    }
+    echo "$porcja_id";
+    
+
+    $id_zamow = sprawdz_max_id($conn);
+
+    $sql = "INSERT INTO zamówienia (ZamówID, KlientID, DataZamówienia, Komentarz, KodZniżkowy, Płatność, Cena_ostateczna) 
+    VALUES ($id_zamow, $id_klienta, current_timestamp(), '$komentarz', '$znizka', '$platnosc', '$cena_ostateczna')";
+
+    mysqli_query($conn, $sql);
+
+}
+

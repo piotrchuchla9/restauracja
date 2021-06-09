@@ -7,6 +7,8 @@ require_once('php/component.php');
 if (isset($_POST['add'])){
     
 }
+
+//unset($_SESSION['cart']);
 ?>
 
 <!DOCTYPE html>
