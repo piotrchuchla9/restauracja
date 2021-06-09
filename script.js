@@ -102,4 +102,21 @@ function openMenu(evt, menuName) {
 }
 document.getElementById("myLink").click();
 
-
+//zmiana ilosci w koszyku
+function increaseValue() {
+    var ilosc = "<?php echo $ilosc ?>";
+    alert(ilosc);
+    var value = parseInt(document.getElementById(ilosc).value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById(ilosc).value = value;
+  }
+  
+  function decreaseValue() {
+    var ilosc = "<?php echo $ilosc ?>";
+    var value = parseInt(document.getElementById(ilosc).value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value--;
+    document.getElementById(ilosc).value = value;
+  }
