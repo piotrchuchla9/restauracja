@@ -44,26 +44,7 @@ session_start();
             ?>     
     </div>
     
-    <?php
-
-                $max_id = sprawdz_max_id($conn);
-                $id = $max_id + 1;
-
-                if(isset($_POST['zamow'])) {
-                    $id = sprawdz_max_id($conn);
-                    $id = $id + 1;
-                    $porcja = $_POST['porcja'];
-
-                    foreach()
-
-                    
-                }
-                
-
-
-
-
-    ?>
+    
 
 
 

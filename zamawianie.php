@@ -41,7 +41,6 @@ if (isset($_POST['submit'])) {
     <h1>Dokończ zamówienie!</h1>
     <div class="modal-body">
         <form method="POST" action="zamawianie.php">
-        <form method="POST">
             <thead>
                 <td style='float: left; width: 70%; text-align: left;'>
                     <label for="imie">Imie</label>
@@ -58,11 +57,6 @@ if (isset($_POST['submit'])) {
                 <td style='float: left; width: 70%; text-align: left;'>
                     <label for="adres">Adres</label>
                     <input type="text" name="adres" id="numer">
-                    <input type="phone" name="numer" id="numer">
-                </td><br>
-                <td style='float: left; width: 70%; text-align: left;'>
-                    <label for="adres">Adres</label>
-                    <input type="adres" name="numer" id="numer">
                 </td><br>
                 <td style='float: left; width: 70%; text-align: left;'>
                     <label for="message">
@@ -88,7 +82,6 @@ if (isset($_POST['submit'])) {
             <div class="modal-footer border-top-0 d-flex justify-content-between">
                 <button type="button" class="btn btn-secondary menuBtn" data-dismiss="modal" onclick="window.location='cart.php'">Wróć do zamówienia</button>
                 <button type="submit" name="zamowFinal" class="btn btn-success zamowBtn" onclick="window.location='zamawianie.php'">Zamów</button>
-                <button type="submit" class="btn btn-success zamowBtn" onclick="window.location='zamawianie.php'">Zamów</button>
             </div>
         </form>
     </div>
@@ -131,7 +124,6 @@ if(isset($_POST['zamowFinal'])) {
 
 
 ?>
-
 
 
     <script src="script.js"></script>
