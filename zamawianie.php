@@ -59,8 +59,7 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="adres" id="numer">
                 </td><br>
                 <td style='float: left; width: 70%; text-align: left;'>
-                    <label for="message">
-                        Komentarz do zamówienia
+                    <label for="message">Komentarz do zamówienia
                     </label>
                     <textarea name="komentarz" id="komentarz" cols="150" rows="10">
                 </textarea>

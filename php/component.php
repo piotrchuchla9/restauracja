@@ -97,7 +97,7 @@ function printCart($conn)
 
         <td width='10%'>
             
-            <button type='submit' name='delete'>Usuń</button>
+            <button type='submit' name='delete' >Usuń</button>
             <input type='hidden' name='productID' value='$item'>
             
             
@@ -165,7 +165,10 @@ function order_zamow($conn, $id, $porcja_id, $imie, $nazwisko, $telefon, $adres,
     $sql = "SELECT Klient_ID FROM klient WHERE Imie = '$imie' AND Nazwisko = '$nazwisko' AND Telefon = '$telefon' AND Adres = '$adres'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
-    $id_klienta = $row['Klient_ID'];
+    if($row != null){
+        $id_klienta = $row['Klient_ID'];
+    }
+    
 
     if($id_klienta < 1) {
         $sql = "INSERT INTO klient (Imie, Nazwisko, Telefon, Adres) VALUES ('$imie', '$nazwisko', '$telefon', '$adres')";
