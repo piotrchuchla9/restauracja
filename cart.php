@@ -30,7 +30,7 @@ session_start();
                 if(isset($_POST['add'])) {
                     $productID = $_POST['productID'];
 
-                    cartElement($productID);
+                    cartElement($productID, $porcjaID);
                 }
 
                 if(isset($_POST['delete'])) {

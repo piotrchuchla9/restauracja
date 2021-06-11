@@ -19,11 +19,11 @@ function component($productID, $productName, $productPrice, $productDescription)
 }
 
 
-function cartElement($productID)
+function cartElement($productID, $porcjaID)
 {
 
     //session_start();
-    $_SESSION['cart'][$productID] += 1;
+    $_SESSION['cart'][$productID][$porcjaID] += 1;
 
     header("location: ../index.php");
     
@@ -65,24 +65,24 @@ function printCart($conn)
             </thead>
         ';
         
-        foreach ($_SESSION['cart'] as $item => $ilosc) {
-
+        foreach ($_SESSION['cart'] as $product) {
+            foreach($product as $item) {
             $sql = "SELECT * FROM Menu WHERE Menu_ID = '$item'";
             $result = mysqli_query($conn, $sql);
 
             $row = mysqli_fetch_array($result);
-            $suma_czesciowa = $row['Cena'] * $ilosc;
+            $suma_czesciowa = $row['Cena'] * $item;
             $suma += $suma_czesciowa;
             $element = "
-    
+            
     <tbody>
 
     <form action='zamawianie.php' method='POST'>
     <tr class='inCart'>
         <td style='float: left; width: 70%; text-align: left;'> $licznik. ". $row['Kategoria'] ." - " . $row['Nazwa'] . " </td>
         <td width='10%'>" . $row['Cena'] . "</td>
-        <!--<button name='decqty' onClick='decqty($ilosc)'>-</button>-->
-        <td width='10%' class='qty'><input type='text' class='form-control' id='input1' style='max-width: 20px; height: 30px;text-align: center;' value='$ilosc'></td>
+        <!--<button name='decqty' onClick='decqty($item)'>-</button>-->
+        <td width='10%' class='qty'><input type='text' class='form-control' id='input1' style='max-width: 20px; height: 30px;text-align: center;' value='$item'></td>
         <!--<button name='incqty'>+</button>-->
         <td width='10%'>".$suma_czesciowa."zł</td>
         
@@ -112,6 +112,7 @@ function printCart($conn)
             echo  $element;
         }
     }
+}
     
     if (!empty($_SESSION['cart'])) {
         echo '
@@ -140,11 +141,11 @@ function sprawdz_max_id($conn)
 
     $sql = "SELECT sprawdz_max_id() as sprawdz_max_id_info";
     $statement = mysqli_stmt_init($conn);
-    
 
     if (!mysqli_stmt_prepare($statement, $sql)) {
-        header("location: ../login.php?error=stmtfailed");
-        exit();
+        return 1;
+        // header("location: ../login.php?error=stmtfailed");
+        // exit();
       }
 
     //mysqli_stmt_bind_param($statement);
@@ -178,13 +179,18 @@ function order_zamow($conn, $id, $porcja_id, $imie, $nazwisko, $telefon, $adres,
 
 
 
-    foreach($_SESSION['cart'] as $item => $ilosc) {
-        $sql = "INSERT INTO zamów VALUES($id, $item, $porcja_id, $ilosc)";
-        //mysqli_query($conn, $sql);
-
-        if (!$conn -> query($sql)) {
-            echo("Error description: " . $conn -> error);
+    foreach($_SESSION['cart'] as $item) {
+        foreach ($item as $product) {
+            foreach ($product as $porcja) {
+                $sql = "INSERT INTO zamów VALUES($id, $item, $product,$porcja)";
+                mysqli_query($conn, $sql);
+        
+                if (!$conn -> query($sql)) {
+                    echo("Error description: " . $conn -> error);
+                    }
             }
+        }
+
 
     }
     echo "$porcja_id";

@@ -4,26 +4,26 @@ require_once "php/component.php";
 
 session_start();
 
-if (isset($_POST['submit'])) {
-    $imie = $_POST['imie'];
-    $nazwisko = $_POST['nazwisko'];
-    $komentarz = $_POST['komentarz'];
-    $numer = $_POST['numer'];
-    $adres = $_POST['adres'];
-    $data = date('d-m-y h:i:s');
-    $platnosc = $_POST['platnosc'];
-    $klientid = //nie wiem jak to wyciagnąć 
+// if (isset($_POST['submit'])) {
+//     $imie = $_POST['imie'];
+//     $nazwisko = $_POST['nazwisko'];
+//     $komentarz = $_POST['komentarz'];
+//     $numer = $_POST['numer'];
+//     $adres = $_POST['adres'];
+//     $data = date('d-m-y h:i:s');
+//     $platnosc = $_POST['platnosc'];
+//     $klientid = //nie wiem jak to wyciagnąć 
     
-    $klient = "INSERT INTO klient (Imie,Nazwisko,Telefon,Adres)
-     VALUES ('$imie','$nazwisko','$numer','$adres')";
-    $zamowienie = "INSERT INTO zamowienia (KlientID,DataZamówienia,Komentarz,KodZniżkowy,Płatność)
-     VALUES ('$klientid','$data','$komentarz','$kod','$platnosc')";
-    if (mysqli_query($conn, $sql)) {
-        echo "Pomyślnie dodano zmówienie !";
-    } else {
-        echo "Error: " . $sql . ":-" . mysqli_error($conn);
-    }
-}
+//     $klient = "INSERT INTO klient (Imie,Nazwisko,Telefon,Adres)
+//      VALUES ('$imie','$nazwisko','$numer','$adres')";
+//     $zamowienie = "INSERT INTO zamowienia (KlientID,DataZamówienia,Komentarz,KodZniżkowy,Płatność)
+//      VALUES ('$klientid','$data','$komentarz','$kod','$platnosc')";
+//     if (mysqli_query($conn, $sql)) {
+//         echo "Pomyślnie dodano zmówienie !";
+//     } else {
+//         echo "Error: " . $sql . ":-" . mysqli_error($conn);
+//     }
+// }
 ?>
 
 <!DOCTYPE html>
