@@ -20,6 +20,9 @@ session_start();
 <body>
     <h1>Twój koszyk</h1>
 
+
+    
+
     <div class="modal-body">
 
 
