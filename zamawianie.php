@@ -80,7 +80,7 @@ session_start();
 
             <div class="modal-footer border-top-0 d-flex justify-content-between">
                 <button type="button" class="btn btn-secondary menuBtn" data-dismiss="modal" onclick="window.location='cart.php'">Wróć do zamówienia</button>
-                <button type="submit" name="zamowFinal" class="btn btn-success zamowBtn" onclick="window.location='zamawianie.php'">Zamów</button>
+                <button type="submit" name="zamowFinal" class="btn btn-success zamowBtn">Zamów</button>
             </div>
         </form>
     </div>
@@ -107,10 +107,9 @@ if(isset($_POST['zamowFinal'])) {
     $komentarz = $_POST['komentarz'];
     $platnosc = $_POST['platnosc'];
     $znizka = $_POST['znizka'];
-    $cena_ostateczna = 100;
 
 
-    order_zamow($conn, $id, 1, $imie, $nazwisko, $telefon, $adres, $komentarz, $znizka, $platnosc, $cena_ostateczna);
+    order_zamow($conn, $id, $imie, $nazwisko, $telefon, $adres, $komentarz, $znizka, $platnosc);
     
 
     //header("location: zamawianie.php");

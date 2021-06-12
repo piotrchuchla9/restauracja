@@ -120,3 +120,5 @@ function increaseValue() {
     value--;
     document.getElementById(ilosc).value = value;
   }
+
+  
