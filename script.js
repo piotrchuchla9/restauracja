@@ -18,6 +18,8 @@ $("document").ready(function () {
     wysokoscDane = wysokoscDane + $(".copy").height();
     $(".daneBackground").css("height", wysokoscDane);
 
+    document.getElementById("scrollTo").scrollIntoView();
+
     
 
 
@@ -121,4 +123,5 @@ function increaseValue() {
     document.getElementById(ilosc).value = value;
   }
 
+  
   

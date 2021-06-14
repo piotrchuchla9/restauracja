@@ -20,7 +20,7 @@ h1 {
 .modal-body {
     margin: auto;
     margin-top:5%;
-    width: 90%;
+    width: 40%;
     border: 3px solid orange;
     padding: 10px;
     font-size: 30px;
@@ -82,82 +82,23 @@ h1 {
  
 
 @media (max-width: 380px) {
-
-    .mainTr {
-        width: 350px;
+    h1 {
+        font-size: 40px;
     }
 
-    th {
+    .modal-body {
+        width: 90%;
+    }
+
+    label {
         font-size: 17px;
     }
 
-    .inCart {
-        width: 350px !important;
-        font-size: 15px;
+    span {
+        font-size: 17px !important;
     }
 
-    input {
-        height: 10px !important;
-        width: 15px !important;
+    textarea {
+        width: 13em;
     }
-
-    .btnCnt {
-        width: 1px !important;
-        height: 1px;
-        padding: 1 !important;
-    }
-
-    .dltBtn {
-        width: 5px !important;
-        height: 5px !important;
-        text-indent: -9999em;
-        background-color: red;
-        padding: 5px !important;
-
-    }
-
-    select {
-        width: 20px;
-    }
-
-    .qty {
-        position: relative;
-    }
-
-    .minus {
-        position: absolute;
-        top: 5px;
-        left: 13px !important;
-    }
-
-    .plus {
-        position: absolute;
-        top: 45px;
-        left: 13px !important;
-    }
-
-    .btns {
-        position: relative;
-        margin-bottom: 60px;
-    }
-
-    .btn1 {
-        position: absolute;
-        top: 0px;
-        left: -150px;
-    }
-
-    .btn3 {
-        position: absolute;
-        top: 0px;
-        left: 120px;
-    }
-
-    .btn2 {
-        position: absolute;
-        left: 240px;
-
-    }
-
-
 }

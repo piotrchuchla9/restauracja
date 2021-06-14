@@ -4,6 +4,7 @@
     box-sizing: content-box;
     margin: 0;
     padding: 0;
+    word-wrap: break-word;
 }
 
 body {
@@ -189,7 +190,7 @@ main {
     font-weight: bold;
     text-transform: uppercase;
 }
-.pizza, .zupa, .suszi, .pierogi, .inne {
+.pizza, .zupa, .suszi, .pierogi{
     height: 200px;
     border-top: 1px solid black;
     font-size: 30px;
@@ -350,6 +351,215 @@ iframe {
     display: inline-block;
 }
 
+.naszeMenu {
+    font-style: italic;
+    font-weight: bold;
+}
 
 
 
+@media (max-width: 380px) {
+
+    .logo {
+        display: none;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    nav {
+        float:none;
+        margin: 0;
+    }
+
+    nav li {
+        margin-left: 15px;
+    }
+
+    nav a {
+        font-size: 15px;
+    }
+
+    .cart img {
+        width: 35px;
+    }
+
+    .enter .welcome p {
+        padding-bottom: 10px;
+        font-size: 30px;
+    }
+
+    .enter .welcome button {
+        font-size: 20px;
+    }
+
+    .photo {
+        margin-top: 100px;
+        height: 100px !important;
+    }
+
+    .welcome {
+        margin-top: 100px;
+        height: 100px !important;
+    }
+
+    .naszeMenu {
+        font-size: 30px !important;
+    }
+
+    .foodBtnCont {
+        width: 350px;
+        margin: 0 !important;
+    }
+
+    .foodBtn {
+        width: 70px !important;
+        font-size: 25px;
+        padding: 0 !important;
+    }
+    
+    #tabs {
+        width: 350px !important;
+    }
+
+    #Pizza h1 {
+        font-size: 25px;
+        position: relative;
+    }
+
+    #Pizza p {
+        font-size: 20px;
+    }
+
+    #Pizza .cenaSpan {
+        font-size: 15px;
+        position: absolute;
+        top: 5px;
+        left: 200px;
+
+    }
+
+    #Pizza .btnSpan {
+        width: 45px !important;
+        height: 45px !important;
+        position: absolute;
+        top: -5px;
+        left: 270px;
+    }
+
+    #Pizza .btnSpan img{
+        width: 35px !important;
+    }
+
+    /*  */
+
+    #Zupy h1 {
+        font-size: 25px;
+        position: relative;
+    }
+
+    #Zupy p {
+        font-size: 20px;
+    }
+
+    #Zupy .cenaSpan {
+        font-size: 15px;
+        position: absolute;
+        top: 5px;
+        left: 200px;
+
+    }
+
+    #Zupy .btnSpan {
+        width: 45px !important;
+        height: 45px !important;
+        position: absolute;
+        top: -5px;
+        left: 270px;
+    }
+
+    #Zupy .btnSpan img{
+        width: 35px !important;
+    }
+
+    /*  */
+
+    #Sushi h1 {
+        font-size: 25px;
+        position: relative;
+    }
+
+    #Sushi p {
+        font-size: 20px;
+    }
+
+    #Sushi .cenaSpan {
+        font-size: 15px;
+        position: absolute;
+        top: -20px;
+        left: 260px;
+
+    }
+
+    #Sushi .btnSpan {
+        width: 35px !important;
+        height: 35px !important;
+        position: absolute;
+        top: -5px;
+        left: 270px;
+    }
+
+    #Sushi .btnSpan img{
+        width: 25px !important;
+    }
+
+    /*  */
+
+    #Pierogi h1 {
+        font-size: 25px;
+        position: relative;
+    }
+
+    #Pierogi p {
+        font-size: 20px;
+    }
+
+    #Pierogi .cenaSpan {
+        font-size: 15px;
+        position: absolute;
+        top: -20px;
+        left: 260px;
+
+    }
+
+    #Pierogi .btnSpan {
+        width: 35px !important;
+        height: 35px !important;
+        position: absolute;
+        top: -5px;
+        left: 270px;
+    }
+
+    #Pierogi .btnSpan img{
+        width: 25px !important;
+    }
+
+    .slide {
+        font-size: 30px;
+    }
+
+    .slideContent {
+        font-size: 20px;
+    }
+
+    iframe {
+        width: 200px;
+        height: 200px;
+    }
+
+    .txt {
+        font-size: 30px;
+    }
+    
+}

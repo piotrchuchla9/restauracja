@@ -6,12 +6,12 @@ include_once "database.php";
 function component($productID, $productName, $productPrice, $productDescription)
 {
     $element = "
-    <h1><b><span class='danieID'> $productID </span> $productName </b>
+    <h1><b><span class='danieID'> $productID<span>.</span> </span> $productName </b>
     <form action='cart.php' method='POST'>
-    <button type='submit' style='float:right; width:40px;' name='add'> <img src='img/addtocart.png' alt='addtocart' /> </button>
+    <button class='btnSpan' type='submit' style='float:right; width:40px;' name='add'> <img src='img/addtocart.png' alt='addtocart' /> </button>
     <input type='hidden' name='productID' value='$productID'>
     </form>
-    <span class='w3-right w3-tag w3-round' style='margin-right: 25px;'> $productPrice </span></h1>
+    <span class='w3-right w3-tag w3-round cenaSpan' style='margin-right: 25px;'> $productPrice<span>zł</span></span></h1>
     <p class='w3-text-grey style='height: 50px'> $productDescription </p><hr>
     ";
 
@@ -60,14 +60,14 @@ function printCart($conn)
         echo '
         <h2 style="font-size: 40px">Twój koszyk jest pusty!</h2>
         <div class="modal-footer border-top-0 d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary menuBtn" data-dismiss="modal" onclick="window.location=\'index.php\'">Wróć do MENU</button>
+            <button style="cursor: pointer; border: 1px solid black; border-radius: 20%; padding: 5px; width: 110px;" type="button" class="btn btn-secondary menuBtn" data-dismiss="modal" onclick="window.location=\'index.php\'">Wróć do MENU</button>
         </div>
         ';
     } else if (!empty($_SESSION['cart'])) {
 
         echo '
         <thead class="mainTable">
-                <tr>
+                <tr class="mainTr">
                     <th scope="col" style="float:left;">Danie</th>
                     <th scope="col">Cena/szt</th>
                     <th scope="col">Ilość</th>
@@ -86,8 +86,13 @@ function printCart($conn)
                 $sql = "SELECT Cena, Kategoria, Nazwa FROM Menu WHERE Menu_ID = '$productId'";
                 $result = mysqli_query($conn, $sql);
 
+                $sqlPorcja = "SELECT MnożnikCeny FROM porcja WHERE Porcja_ID = '$itemId'";
+                $resultPorcja = mysqli_query($conn, $sqlPorcja);
+                $rowPorcja = mysqli_fetch_array($resultPorcja);
+                $mnoznik = $rowPorcja['MnożnikCeny'];
+
                 $row = mysqli_fetch_array($result);
-                $suma_czesciowa = $row['Cena'] * $item;
+                $suma_czesciowa = round(($row['Cena'] * $mnoznik) * $item, 2);
                 $suma += $suma_czesciowa;
                 $element = "
             
@@ -96,25 +101,28 @@ function printCart($conn)
     <form action='zamawianie.php' method='POST'>
     <tr class='inCart'>
         <td style='float: left; width: 70%; text-align: left;'> $licznik. " . $row['Kategoria'] . " - " . $row['Nazwa'] . " </td>
-        <td width='10%'>" . $row['Cena'] . "</td>
+        <td width='10%'>" . round($row['Cena'] * $mnoznik, 2) . "zł</td>
         
-        <td width='10%' class='qty'><button name='decqty'>-</button><input type='text' class='form-control' id='input1' style='max-width: 20px; height: 30px;text-align: center;' value='$item'><button name='incqty'>+</button></td>
+        <td width='10%' class='qty'>
+        <button class='btnCnt' style='cursor: pointer; border: 1px solid black; border-radius: 50%; padding: 5px; width: 10px;' type='button' name='decrease' onclick='decreaseQuantity($productId, $itemId)'><span class='minus'>-</span></button>
+        <input type='text' disabled class='form-control' id='input1' style='max-width: 20px; height: 30px;text-align: center;' value='$item'>
+        <button  class='btnCnt'style='cursor: pointer; border: 1px solid black; border-radius: 50%; padding: 5px; width: 10px;'type='button' name='increase' onclick='increaseQuantity($productId, $itemId)'><span class='plus'>+</span></button>
+        </td>
         
         <td width='10%'>" . $suma_czesciowa . "zł</td>
         
         <td width='10%'>
-        <select name='porcja' id='porcja'>
-        <option value='2'>Średnia</option>
-        <option value='1'>Mała</option>
-        <option value='3'>Duża</option>
+        <select onchange='changePortion($productId, $itemId)' name='porcja' id='porcja-$productId-$itemId'>
+        <option value='2' ".( $itemId == 2 ? 'selected':'' ).">Średnia</option>
+        <option value='1' ".( $itemId == 1 ? 'selected':'' ).">Mała</option>
+        <option value='3' ".( $itemId == 3 ? 'selected':'' ).">Duża</option>
         </select>
         
         </td>
 
         <td width='10%'>
             
-            <button type='submit' name='delete' formaction='cart.php' >Usuń</button>
-            <input type='hidden' name='productID' value='$item'>
+            <button class='dltBtn' style='cursor: pointer; border-radius: 25%' type='button' name='delete' onclick='deleteRow($productId, $itemId)' ><span>Usuń</span></button>
             
             
         </td>
@@ -134,12 +142,14 @@ function printCart($conn)
     if (!empty($_SESSION['cart'])) {
         echo '
     </table>
-    <div class="d-flex justify-content-end">
-            <h5 style="margin-top: 30px;font-size: 30px; text-align: right; margin-right: 20px;">Do zapłaty: <span class="price text-success"> ' . $suma . ' zł</span></h5>
+    <div style="margin-bottom: 10px;" class="d-flex justify-content-end">
+            <h5 style="margin-top: 30px;font-size: 30px; text-align: right; margin-right: 20px;">Do zapłaty: <span class="price text-success"> ' . $suma . 'zł</span></h5>
         </div>
-        <div class="modal-footer border-top-0 d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary menuBtn" data-dismiss="modal" onclick="window.location=\'index.php\'">Wróć do MENU</button>
-            <button type="submit" name="zamow" class="btn btn-success zamowBtn">Zamów</button>
+        <hr>
+        <div class="modal-footer border-top-0 d-flex justify-content-between btns">
+            <button type="button" class="btn1" style="cursor: pointer; border-radius: 25%; margin-left: 150px;"class="btn btn-secondary menuBtn" data-dismiss="modal" onclick="window.location=\'index.php\'">Wróć do MENU</button>
+            <button type="submit" class="btn2" style="cursor: pointer; border-radius: 25%; margin-left: 20px;" name="zamow" class="btn btn-success zamowBtn">Zamów</button>
+            <button type="button" class="btn3" style="cursor: pointer; border-radius: 25%; float: right; margin-right: 20px;" onclick="clearCart()">Wyczyść Koszyk</button>
         </div>
         </form>
     ';
@@ -190,12 +200,14 @@ function order_zamow($conn, $id, $imie, $nazwisko, $telefon, $adres, $komentarz,
     $cena_ostateczna = $_SESSION['cartSum'];
     $id_klienta = 0;
     if($znizka != null && strlen($znizka) > 0){
-        $sqlZnizka = "SELECT Rabat FROM kupon WHERE KodZniżkowy = '$znizka'";
+        $sqlZnizka = "SELECT Rabat FROM kupon WHERE KodZniżkowy = '$znizka' AND DataWażności > current_timestamp()";
         $resultZnizka = mysqli_query($conn, $sqlZnizka);
         $rowZnizka = mysqli_fetch_array($resultZnizka);
+        
         if ($rowZnizka != null) {
             $rabat = $rowZnizka['Rabat'];
             $cena_ostateczna = $cena_ostateczna * $rabat;
+            $_SESSION['cartSum'] = $cena_ostateczna;
         } else {
             header("location: ../wrongCode.php");
             exit();

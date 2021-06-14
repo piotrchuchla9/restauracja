@@ -15,13 +15,17 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleCart.css">
     <title>Document</title>
+    <script src="cartScript.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
 </head>
 
 <body>
     <h1>Twój koszyk</h1>
 
 
-    
+
 
     <div class="modal-body">
 
@@ -30,29 +34,28 @@ session_start();
         <table class="table table-image" style="width: 100%;">
             <?php
 
-                if(isset($_POST['add'])) {
-                    $productID = $_POST['productID'];
-                    $porcjaID = 2;
-                    cartElement($productID, $porcjaID);
-                }
+            if (isset($_POST['add'])) {
+                $productID = $_POST['productID'];
+                $porcjaID = 2;
+                cartElement($productID, $porcjaID);
+            }
 
-                if(isset($_POST['delete'])) {
-                    $productID = $_POST['productID'];
-                    $porcja = $_POST['porcja'];
-                    deleteItem($productID, $porcja);
-                }
+            if (isset($_POST['delete'])) {
+                $productID = $_POST['productID'];
+                $porcja = $_POST['porcja'];
+                deleteItem($productID, $porcja);
+            }
 
-                printCart($conn);
+            printCart($conn);
 
-            ?>     
+            ?>
     </div>
-    
-    
 
 
 
 
-    <script src="script.js"></script>
+
+
 </body>
 
 </html>
